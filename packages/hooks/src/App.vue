@@ -8,6 +8,7 @@
         <div>data: {{data}}</div>
     </div>
     <button @click="run">请求</button>
+    <button @click="cancel">取消</button>
 </template>
 
 <script lang="ts">
@@ -24,7 +25,7 @@ function mockApiRequest() {
             a: 1
         }
       })
-    }, 2000);
+    }, 4000);
   });
 }
 export default defineComponent({
@@ -36,13 +37,14 @@ export default defineComponent({
             count.value += 1;
             console.log('Submit finished');
         })
-        const { run, loading, data } = useRequest(mockApiRequest)
+        const { run, cancel, loading, data } = useRequest(mockApiRequest)
         return {
             count,
             submit,
             loading,
             data,
-            run
+            run,
+            cancel
         }
     }
 })

@@ -1,9 +1,9 @@
-import { ref } from "vue-demi";
 import Fetch from "./fetch";
+import { testPlugin } from './plugin';
 import type { Service, UseRequestOptions, UseRequestReturn } from "./types";
 export function useRequestImplement(service: Service, options?: UseRequestOptions): UseRequestReturn {
     const fetchInstance = new Fetch(service);
-    
+    fetchInstance.registePlugin([testPlugin])
     return {
         loading: fetchInstance.loading,
         data: fetchInstance.data,
